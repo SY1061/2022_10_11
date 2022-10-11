@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.messagesender.SmsMessageSender"
+    scope = "singleton" init-method="init">
+    </bean>
+
+    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.EmailMessageSender"
+          scope = "singleton" destroy-method="cleanup">
+    </bean>
+
+    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService"
+    autowire="byName">
+<!--        <constructor-arg ref="smsMessageSender" />-->
+<!--        Constructor Injection 의 예-->
+<!--        <property name="messageSender" ref="smsMessageSender" />-->
+<!--        Setter Injection 의 예-->
+    </bean>
+
+</beans>
